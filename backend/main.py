@@ -7,8 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-from backend.DB import Base, SessionLocal, engine
-from backend.JWT import (
+from backend.database import Base, SessionLocal, engine
+from backend.security import (
     create_access_token,
     create_refresh_token,
     decode_token,

@@ -1,2 +1,2 @@
-from .Admin import Admin
+from .admin import Admin
 from .machine import Machine

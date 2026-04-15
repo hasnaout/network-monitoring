@@ -3,12 +3,14 @@ import base64
 import hashlib
 import hmac
 import os
+from pathlib import Path
 
 from jose import JWTError, jwt
 from dotenv import load_dotenv
 from fastapi.security import OAuth2PasswordBearer
 
-load_dotenv()
+ENV_FILE = Path(__file__).resolve().parents[1] / ".env"
+load_dotenv(ENV_FILE)
 
 SECRET_KEY = os.getenv("SECRET_KEY", "change-me-in-production")
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
