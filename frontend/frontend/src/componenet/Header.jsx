@@ -1,30 +1,61 @@
-export default function Header({ auth, onLogout }) {
+const navItems = [
+  { href: '#/', label: 'Dashboard' },
+  { href: '#/machines/new', label: 'Machines' },
+];
+
+export default function Header({ auth, onLogout, route }) {
   const isAuthenticated = Boolean(auth?.accessToken);
+  const currentRoute = route || window.location.hash || '#/';
 
   return (
     <header className="site-header">
-      <div className="brand">
-        <span className="brand-dot" aria-hidden="true" />
-        <div>
-          <h1>Network Monitor</h1>
-          <p>Etat global du parc et activite temps reel</p>
-        </div>
+      <div className="site-header__brand">
+        <a className="brand" href="#/">
+          <span className="brand-mark" aria-hidden="true">
+            NM
+          </span>
+          <div className="brand-copy">
+            <p className="brand-kicker">Operations cockpit</p>
+            <h1>Network Monitor</h1>
+          </div>
+        </a>
+        <p className="brand-summary">
+          Une interface de supervision repensee pour piloter le parc avec plus de lisibilite.
+        </p>
       </div>
 
       <nav className="top-nav" aria-label="Navigation principale">
-        <a href="#/">Dashboard</a>
-        <a href="#/machines/new">Ajouter machine</a>
+        {navItems.map((item) => (
+          <a
+            className={currentRoute === item.href ? 'nav-link is-active' : 'nav-link'}
+            href={item.href}
+            key={item.href}
+          >
+            {item.label}
+          </a>
+        ))}
         {isAuthenticated ? (
           <button className="nav-action" onClick={onLogout} type="button">
-            Deconnexion
+            Se deconnecter
           </button>
         ) : (
-          <a href="#/connexion">Connexion</a>
+          <a
+            className={currentRoute === '#/connexion' ? 'nav-link is-active' : 'nav-link'}
+            href="#/connexion"
+          >
+            Connexion
+          </a>
         )}
       </nav>
 
-      <div className="header-status">
-        {isAuthenticated ? `Connecte: ${auth.username}` : 'Systeme online'}
+      <div className="header-badge">
+        <span className="header-badge__label">Session</span>
+        <strong className="header-badge__value">
+          {isAuthenticated ? auth.username : 'Visiteur'}
+        </strong>
+        <span className={isAuthenticated ? 'signal-pill signal-pill--live' : 'signal-pill'}>
+          {isAuthenticated ? 'Securisee' : 'Standby'}
+        </span>
       </div>
     </header>
   );

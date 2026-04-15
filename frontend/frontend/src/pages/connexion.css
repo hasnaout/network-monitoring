@@ -1,91 +1,249 @@
-.connexion-container {
+.connexion-shell {
+  width: min(1240px, calc(100% - 40px));
   min-height: 100vh;
+  margin: 0 auto;
+  padding: 40px 0;
   display: grid;
-  place-items: center;
-  padding: 24px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+  gap: 22px;
+  align-items: stretch;
 }
 
-.connexion-box {
-  width: min(100%, 430px);
-  background: #1b263d;
-  border: 1px solid rgba(152, 180, 209, 0.14);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(12px);
-  border-radius: 28px;
-  padding: 28px;
+.connexion-showcase,
+.connexion-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  animation: rise-in 0.75s ease;
 }
 
-.connexion-box h1 {
-  margin: 0 0 8px;
-  color: #f2f6fb;
+.connexion-showcase {
+  padding: clamp(28px, 4vw, 42px);
+  background:
+    radial-gradient(circle at top right, rgba(254, 240, 138, 0.2), transparent 28%),
+    linear-gradient(150deg, rgba(16, 37, 66, 0.98), rgba(20, 92, 97, 0.94));
+  color: #f8fbfc;
 }
 
-.connexion-subtitle {
-  margin: 0 0 24px;
-  color: #aab9c7;
+.connexion-showcase::before,
+.connexion-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-.form-group {
+.connexion-showcase::before {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 92%);
+}
+
+.connexion-card {
+  padding: clamp(28px, 4vw, 38px);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+}
+
+.connexion-card::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.46), transparent 44%);
+}
+
+.showcase-title,
+.connexion-card h2 {
+  margin: 0;
+  font-family: var(--font-display);
+}
+
+.showcase-title {
+  max-width: 11ch;
+  font-size: clamp(2.8rem, 5.2vw, 4.8rem);
+  line-height: 0.96;
+}
+
+.showcase-copy,
+.connexion-card__header p,
+.showcase-stat p {
+  line-height: 1.72;
+}
+
+.showcase-copy {
+  max-width: 58ch;
+  margin: 18px 0 0;
+  color: rgba(233, 243, 246, 0.82);
+}
+
+.showcase-pill-row,
+.showcase-grid,
+.connexion-form,
+.connexion-card__footer {
   display: grid;
-  gap: 8px;
-  margin-bottom: 18px;
+  gap: 14px;
 }
 
-.form-group label {
-  color: #d8e1eb;
-  font-weight: 600;
+.showcase-pill-row {
+  margin-top: 22px;
+  grid-template-columns: repeat(3, max-content);
 }
 
-.form-group input {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(149, 176, 204, 0.18);
-  background: rgba(245, 246, 248, 0.9);
-  color: #edf3f8;
-  outline: none;
-}
-
-.form-group input::placeholder {
-  color: #090a0a;
-}
-
-.btn-submit {
+.showcase-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 14px;
+  min-height: 42px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(248, 251, 252, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.btn-submit {
-  border: none;
-  cursor: pointer;
-  background: linear-gradient(135deg, #38bdf8 0%, #1b263d 100%);
-  color: #f8fbff;
+.showcase-grid {
+  margin-top: 28px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.showcase-stat {
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.showcase-stat span,
+.showcase-note span,
+.connexion-inline-meta span {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(233, 243, 246, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.74rem;
+}
+
+.showcase-stat strong,
+.showcase-note strong,
+.connexion-inline-meta strong {
+  font-size: 1.1rem;
+}
+
+.showcase-stat p,
+.connexion-card__header p,
+.connexion-inline-meta span {
+  margin: 0;
+}
+
+.showcase-note {
+  width: fit-content;
+  margin-top: 28px;
+  padding: 16px 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.connexion-card__header {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.connexion-card__header h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--text-strong);
+}
+
+.connexion-card__header p {
+  color: var(--text-muted);
+}
+
+.connexion-form .form-group {
+  margin: 0;
+}
+
+.connexion-form .form-group span {
+  color: var(--text-strong);
   font-weight: 700;
 }
 
-.btn-submit:disabled {
-  opacity: 0.7;
-  cursor: progress;
+.connexion-form .form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(19, 36, 58, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
+  outline: none;
 }
 
-.error {
-  margin: 0 0 16px;
-  color: #a42e3c;
+.connexion-form .form-group input::placeholder {
+  color: rgba(90, 104, 124, 0.8);
+}
+
+.connexion-form .form-group input:focus {
+  border-color: rgba(13, 148, 136, 0.35);
+  box-shadow: 0 0 0 5px rgba(13, 148, 136, 0.12);
+}
+
+.btn-submit {
+  width: 100%;
+  cursor: pointer;
+}
+
+.login-feedback {
+  margin-bottom: 0;
+}
+
+.connexion-card__footer {
+  margin-top: 20px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.connexion-inline-meta {
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(245, 248, 252, 0.84);
+}
+
+.connexion-inline-meta span {
+  color: var(--text-muted);
+}
+
+.connexion-inline-meta strong {
+  color: var(--text-strong);
 }
 
 .back-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  padding: 14px 16px;
-  border-radius: 14px;
-  margin-top: 14px;
-  border: 1px solid rgba(149, 176, 204, 0.18);
-  background: rgba(11, 24, 38, 0.55);
-  color: #c5d4e4;
+}
+
+@media (max-width: 1080px) {
+  .connexion-shell,
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-title {
+    max-width: 15ch;
+  }
+}
+
+@media (max-width: 720px) {
+  .connexion-shell {
+    width: min(100% - 20px, 1240px);
+    padding: 18px 0 28px;
+  }
+
+  .connexion-showcase,
+  .connexion-card {
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  .showcase-pill-row {
+    grid-template-columns: 1fr;
+  }
 }

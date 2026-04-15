@@ -96,8 +96,9 @@ function App() {
     return (
       <div className="screen-state">
         <div className="screen-card">
+          <p className="screen-kicker">Network Monitor</p>
           <h1>Verification de la session</h1>
-          <p>Nous validons votre acces au dashboard.</p>
+          <p>Nous preparons votre espace d'administration et validons l'acces au dashboard.</p>
         </div>
       </div>
     );
@@ -117,11 +118,12 @@ function App() {
         auth={auth}
         onLogout={handleLogout}
         onSessionExpired={handleLogout}
+        route={route}
       />
     );
   }
 
-  return <Home auth={auth} onLogout={handleLogout} />;
+  return <Home auth={auth} onLogout={handleLogout} onSessionExpired={handleLogout} route={route} />;
 }
 
 export default App
