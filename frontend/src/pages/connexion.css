@@ -1,15 +1,3 @@
-.connexion-shell {
-  width: min(1240px, calc(100% - 40px));
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 40px 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
-  gap: 22px;
-  align-items: stretch;
-}
-
-.connexion-showcase,
 .connexion-card {
   position: relative;
   overflow: hidden;
@@ -19,28 +7,11 @@
   animation: rise-in 0.75s ease;
 }
 
-.connexion-showcase {
-  padding: clamp(28px, 4vw, 42px);
-  background:
-    radial-gradient(circle at top right, rgba(254, 240, 138, 0.2), transparent 28%),
-    linear-gradient(150deg, rgba(16, 37, 66, 0.98), rgba(20, 92, 97, 0.94));
-  color: #f8fbfc;
-}
-
-.connexion-showcase::before,
 .connexion-card::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
-}
-
-.connexion-showcase::before {
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 92%);
 }
 
 .connexion-card {
@@ -53,7 +24,6 @@
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.46), transparent 44%);
 }
 
-.showcase-title,
 .connexion-card h2 {
   margin: 0;
   font-family: var(--font-display);
@@ -71,47 +41,10 @@
   line-height: 1.72;
 }
 
-.showcase-copy {
-  max-width: 58ch;
-  margin: 18px 0 0;
-  color: rgba(233, 243, 246, 0.82);
-}
-
-.showcase-pill-row,
-.showcase-grid,
 .connexion-form,
 .connexion-card__footer {
   display: grid;
   gap: 14px;
-}
-
-.showcase-pill-row {
-  margin-top: 22px;
-  grid-template-columns: repeat(3, max-content);
-}
-
-.showcase-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 42px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(248, 251, 252, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.showcase-grid {
-  margin-top: 28px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.showcase-stat {
-  padding: 18px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .showcase-stat span,
