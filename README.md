@@ -17,18 +17,3 @@ cd frontend
 npm install
 npm run dev
 ```
-
-Raccourcis PowerShell :
-
-```powershell
-.\start-backend.ps1
-.\start-frontend.ps1
-```
-
-Raccourcis Windows simples :
-
-```bat
-start-backend.bat
-start-frontend.bat
-start-all.bat
-```
