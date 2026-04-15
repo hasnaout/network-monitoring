@@ -10,9 +10,7 @@ function Footer() {
         <h4>Navigation</h4>
         <div className="footer-links">
           <a href="#/">Dashboard</a>
-          <a href="#">Equipements</a>
-          <a href="#">Alertes</a>
-          <a href="#">Rapports</a>
+          <a href="#/machines/new">Ajouter machine</a>
           <a href="#/connexion">Connexion</a>
         </div>
       </div>

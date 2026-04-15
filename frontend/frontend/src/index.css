@@ -29,6 +29,8 @@ a {
 
 button,
 input,
+select,
+textarea,
 table {
   font: inherit;
 }

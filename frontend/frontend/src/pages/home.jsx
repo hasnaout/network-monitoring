@@ -14,10 +14,12 @@ const devices = [
   { name: "Serveur Web", ip: "192.168.1.10", status: "Offline", latency: "---" },
 ];
 
-export default function Home() {
+export default function Home({ auth, onLogout }) {
+  const isAuthenticated = Boolean(auth?.accessToken);
+
   return (
     <div className="dashboard-shell">
-      <Header />
+      <Header auth={auth} onLogout={onLogout} />
 
       <main className="dashboard-main">
         <section className="hero-panel">
@@ -27,9 +29,21 @@ export default function Home() {
             Vue d&apos;ensemble des equipements surveilles et de leur etat le plus recent.
           </p>
           <div className="hero-actions">
-            <a className="primary-link" href="#/connexion">
-              Acceder a la page de connexion
-            </a>
+            {isAuthenticated ? (
+              <>
+                <span className="welcome-chip">Connecte en tant que {auth.username}</span>
+                <a className="secondary-button" href="#/machines/new">
+                  Ajouter une machine
+                </a>
+                <button className="secondary-button" onClick={onLogout} type="button">
+                  Se deconnecter
+                </button>
+              </>
+            ) : (
+              <a className="primary-link" href="#/connexion">
+                Acceder a la page de connexion
+              </a>
+            )}
           </div>
         </section>
 
