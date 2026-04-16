@@ -1,59 +1,71 @@
+import React, { useState, useEffect } from "react";
+import "./header.css";
+
 const navItems = [
-  { href: '#/', label: 'Dashboard' },
-  { href: '#/machines/new', label: 'Machines' },
+  { href: "#/", label: "Dashboard" },
+  { href: "#/machines/new", label: "Machines" },
 ];
 
 export default function Header({ auth, onLogout, route }) {
   const isAuthenticated = Boolean(auth?.accessToken);
-  const currentRoute = route || window.location.hash || '#/';
+  const currentRoute = route || window.location.hash || "#/";
+
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="site-header">
-      <div className="site-header__brand">
+    <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
+
+      <div className="site-header__left">
         <a className="brand" href="#/">
-          <img src="../../public/assets/logo.png" alt="logo" />
-          <div className="brand-copy">
-            <p className="brand-kicker">Operations cockpit</p>
-            <h1>Network Monitor</h1>
-          </div>
+          <img src="/assets/logo.png" alt="logo" />
+          <h1>Network Monitor</h1>
         </a>
-        <p className="brand-summary">
-          Une interface de supervision repensee pour piloter le parc avec plus de lisibilite.
-        </p>
       </div>
 
-      <nav className="top-nav" aria-label="Navigation principale">
+      <nav className={`top-nav ${menuOpen ? "open" : ""}`}>
         {navItems.map((item) => (
           <a
-            className={currentRoute === item.href ? 'nav-link is-active' : 'nav-link'}
-            href={item.href}
             key={item.href}
+            href={item.href}
+            className={currentRoute === item.href ? "nav-link active" : "nav-link"}
+            onClick={() => setMenuOpen(false)}
           >
             {item.label}
           </a>
         ))}
+
         {isAuthenticated ? (
-          <button className="nav-action" onClick={onLogout} type="button">
-            Se deconnecter
+          <button className="nav-action" onClick={onLogout}>
+            Se déconnecter
           </button>
         ) : (
           <a
-            className={currentRoute === '#/connexion' ? 'nav-link is-active' : 'nav-link'}
             href="#/connexion"
+            className={currentRoute === "#/connexion" ? "nav-link active" : "nav-link"}
+            onClick={() => setMenuOpen(false)}
           >
             Connexion
           </a>
         )}
       </nav>
 
-      <div className="header-badge">
-        <span className="header-badge__label">Session</span>
-        <strong className="header-badge__value">
-          {isAuthenticated ? auth.username : 'Visiteur'}
-        </strong>
-        <span className={isAuthenticated ? 'signal-pill signal-pill--live' : 'signal-pill'}>
-          {isAuthenticated ? 'Securisee' : 'Standby'}
-        </span>
+      <div
+        className={`burger ${menuOpen ? "active" : ""}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </header>
   );

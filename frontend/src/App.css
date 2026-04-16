@@ -83,7 +83,6 @@
   grid-template-columns: minmax(0, 1.4fr) auto auto;
   gap: 24px;
   align-items: center;
-  border-radius: 32px;
   padding: 24px 28px;
   animation: rise-in 0.7s ease;
 }
