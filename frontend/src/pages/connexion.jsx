@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './connexion.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+const API_URL=import.meta.env.VITE_API_URL;
 
 export default function Connexion({ onLoginSuccess }) {
   const [username, setUsername] = useState('');
@@ -46,7 +46,7 @@ export default function Connexion({ onLoginSuccess }) {
       });
     } catch (err) {
       if (err instanceof TypeError) {
-        setError("Impossible de joindre le backend. Demarre l'API sur http://127.0.0.1:8000.");
+        setError("Impossible de joindre le backend");
       } else {
         setError(err.message);
       }
