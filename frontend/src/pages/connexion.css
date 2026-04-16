@@ -1,3 +1,10 @@
+.connexion-container {
+  display: flex;
+  justify-content: center;   
+  align-items: center;       
+  min-height: 100vh;         
+  background: #f5f7fa;     
+}
 .connexion-card {
   position: relative;
   overflow: hidden;
@@ -27,6 +34,7 @@
 .connexion-card h2 {
   margin: 0;
   font-family: var(--font-display);
+  text-align: center;
 }
 
 .showcase-title {

@@ -56,9 +56,10 @@ export default function Connexion({ onLoginSuccess }) {
   };
 
   return (
+    <div className="connexion-container">
       <section className="connexion-card">
         <div className="connexion-card__header">
-          <h2>Acceder a l'administration</h2>
+          <h2>Connexion</h2>
         </div>
 
         <form className="connexion-form" onSubmit={handleSubmit}>
@@ -89,5 +90,6 @@ export default function Connexion({ onLoginSuccess }) {
           </button>
         </form>
       </section>
+      </div>
   );
 }
