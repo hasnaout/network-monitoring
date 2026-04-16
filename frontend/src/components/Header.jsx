@@ -11,9 +11,7 @@ export default function Header({ auth, onLogout, route }) {
     <header className="site-header">
       <div className="site-header__brand">
         <a className="brand" href="#/">
-          <span className="brand-mark" aria-hidden="true">
-            NM
-          </span>
+          <img src="../../public/assets/logo.png" alt="logo" />
           <div className="brand-copy">
             <p className="brand-kicker">Operations cockpit</p>
             <h1>Network Monitor</h1>
