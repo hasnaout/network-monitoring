@@ -12,78 +12,19 @@
   border: 1px solid var(--line);
   box-shadow: var(--shadow-soft);
   animation: rise-in 0.75s ease;
-}
-
-.connexion-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.connexion-card {
   padding: clamp(28px, 4vw, 38px);
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(20px);
 }
-
-.connexion-card::before {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.46), transparent 44%);
-}
-
 .connexion-card h2 {
   margin: 0;
   font-family: var(--font-display);
   text-align: center;
 }
 
-.showcase-title {
-  max-width: 11ch;
-  font-size: clamp(2.8rem, 5.2vw, 4.8rem);
-  line-height: 0.96;
-}
-
-.showcase-copy,
-.connexion-card__header p,
-.showcase-stat p {
-  line-height: 1.72;
-}
-
-.connexion-form,
-.connexion-card__footer {
+.connexion-form{
   display: grid;
   gap: 14px;
-}
-
-.showcase-stat span,
-.showcase-note span,
-.connexion-inline-meta span {
-  display: block;
-  margin-bottom: 8px;
-  color: rgba(233, 243, 246, 0.7);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.74rem;
-}
-
-.showcase-stat strong,
-.showcase-note strong,
-.connexion-inline-meta strong {
-  font-size: 1.1rem;
-}
-
-.showcase-stat p,
-.connexion-card__header p,
-.connexion-inline-meta span {
-  margin: 0;
-}
-
-.showcase-note {
-  width: fit-content;
-  margin-top: 28px;
-  padding: 16px 18px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.1);
 }
 
 .connexion-card__header {
@@ -96,11 +37,6 @@
   font-size: clamp(2rem, 4vw, 3rem);
   color: var(--text-strong);
 }
-
-.connexion-card__header p {
-  color: var(--text-muted);
-}
-
 .connexion-form .form-group {
   margin: 0;
 }
@@ -138,53 +74,9 @@
   margin-bottom: 0;
 }
 
-.connexion-card__footer {
-  margin-top: 20px;
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.connexion-inline-meta {
-  padding: 16px 18px;
-  border-radius: 20px;
-  background: rgba(245, 248, 252, 0.84);
-}
-
-.connexion-inline-meta span {
-  color: var(--text-muted);
-}
-
-.connexion-inline-meta strong {
-  color: var(--text-strong);
-}
-
-.back-link {
-  width: 100%;
-}
-
-@media (max-width: 1080px) {
-  .connexion-shell,
-  .showcase-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .showcase-title {
-    max-width: 15ch;
-  }
-}
-
 @media (max-width: 720px) {
-  .connexion-shell {
-    width: min(100% - 20px, 1240px);
-    padding: 18px 0 28px;
-  }
-
-  .connexion-showcase,
   .connexion-card {
     border-radius: 24px;
     padding: 24px;
-  }
-
-  .showcase-pill-row {
-    grid-template-columns: 1fr;
   }
 }
